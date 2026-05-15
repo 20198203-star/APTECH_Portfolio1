@@ -21,7 +21,7 @@ function Home(){
           </Col>
         </Row>
         <Row style={{marginTop:"200px"}}>
-          <section id="about" style={{backgroundColor:"#4A90E2", padding:"20px"}}>
+          <section id="about">
           <h1 style={{marginLeft:"10px", textAlign:"center", color:"white", fontWeight:"bold"}}>ABOUT ME</h1>
           <p style={{textAlign:"justify", fontSize:"20px", padding:"40px"}}>I am Mara Syldeni Gadgad and I am currently studying at 
             The University of Baguio under the course, Bachelor of Science in Information 

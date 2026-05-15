@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 
 const Admin = () => {
     
@@ -56,11 +59,12 @@ const Admin = () => {
     }
 
     return(
-        <form onSubmit={handleSubmit} style={{margin: "100px"}}>
-             <h1 style={{margin: "60px", fontWeight:"bold", textAlign:"center", color:"white"}}>LOGIN</h1>
-            <table style={{backgroundColor: "#FBE9D0", margin:"auto"}}>
-                <tr> 
-                    <td style={{padding: "20px"}}>
+    <>
+    <form onSubmit={handleSubmit} style={{margin: "100px"}}>
+        <h1 style={{margin: "60px", fontWeight:"bold", textAlign:"center", color:"white"}}>LOGIN</h1>
+            <Container style ={{margin: "auto", backgroundColor: "#F4F4F4", padding:"50px", maxWidth:"400px"}}>
+                <Row>
+                    <Col md={1}>
                         <label>Email: </label>
                         <br />
                         <input 
@@ -71,10 +75,7 @@ const Admin = () => {
                         value={formData.email}
                         onChange={handleChange}
                         />
-                    </td>
-                </tr>
-                <tr>
-                    <td style={{padding: "20px"}}>
+
                         <label>Password: </label>
                         <br />
                         <input 
@@ -85,11 +86,8 @@ const Admin = () => {
                         value={formData.password}
                         onChange={handleChange}
                         />
-                    </td>
-                </tr>
-                <tr>
-                    <td style={{padding: "20px"}}>
-                        <label>Confirm Password: </label>
+
+                        <label>ConfirmPassword: </label>
                         <br />
                         <input 
                         style={{marginBottom: "50px", width:"300px", height:"50px"}}
@@ -99,15 +97,13 @@ const Admin = () => {
                         value={formData.confirm}
                         onChange={handleChange}
                         />
-                    </td>
-                </tr>
-                <tr>
-                    <td style={{padding: "20px"}}>
+
                         <button type="submit" style={{backgroundColor: "#4A90E2", borderColor:"#4A90E2", width:"200px", height:"40px"}}>Login</button>
-                    </td>
-                </tr>
-            </table>
-        </form>
+                    </Col>
+                </Row>
+            </Container>
+    </form>
+    </>
     )
 }
 

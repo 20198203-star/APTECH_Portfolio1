@@ -3,9 +3,23 @@
 }
 
 body {
-  background-color: #000000;
+  background-color: #2D2D2D;
 }
 
 h1{
   margin: 40px;
+}
+
+#about {
+  background-color: #4A90E2;
+  padding: 20px; 
+  color: white;
+}
+
+#reflection {
+  color: white;
+  text-align: justify;
+  font-size: 20px;
+  margin:50px;
+  padding: 60px;
 }

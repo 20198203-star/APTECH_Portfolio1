@@ -33,20 +33,17 @@ app.get("/Allprofile", async (req, res) => {
         const users = await User.find({});
         res.json({status: "ok", data: users});
     } catch(err){
-        res.status(500).json({error: err.message});
+        res.status(500).json({error: error.message});
     }
 })
 
-app.post("/deleteProfile", async (req, res) => {
+app.delete("/deleteProfile", async (req, res) => {
     try{
-        const { userid } = req.body;
-        const data = await User.deleteOne(
-            {_id:userid}, function(err, res){
-                console.log(err);
-            });
-            res.json({status: "Ok", data: "Data Deleted"})
-    } catch (error){
-        console.log(error);
+        const { id } = req.body;
+        const data = await User.findByIdAndDelete(id);
+        res.json({status: "Ok", data: "Data deleted successfully"});
+    } catch (err){
+        res.status(500).json({error:err.message});
     }
 })
 

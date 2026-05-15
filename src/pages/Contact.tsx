@@ -2,8 +2,8 @@ import { useState } from "react";
 import emailjs from "@emailjs/browser";
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
-import Image from 'react-bootstrap/Image';
 import Row from 'react-bootstrap/Row';
+import Image from 'react-bootstrap/Image';
 import mara2 from '../images/mara2.jpg'
 
 
@@ -30,8 +30,6 @@ const Contact:React.FC = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        setLoading(true);
-
         if(!formData.name){
             alert("Name is required!")
             return;
@@ -49,6 +47,7 @@ const Contact:React.FC = () => {
             return;
         }
 
+        setLoading(true);
 
         try {
             const res = await fetch("http://localhost:5000/profile", {
@@ -101,16 +100,18 @@ const Contact:React.FC = () => {
             console.error("ERROR", error);
             setStatus("Failed to deliver message");
         }
+
+        setLoading(false);
     }
 
 
     return(
     <>
     <form onSubmit = {handleSubmit}>
-        <h1 style={{margin: "60px", marginLeft: "150px", fontWeight:"bold", color:"white"}}>CONTACT ME</h1>
-    <Container style ={{margin: "70px", marginLeft: "200px", backgroundColor: "#FBE9D0", padding:"30px"}}>
+        <h1 style={{margin: "60px", textAlign:"center", fontWeight:"bold", backgroundColor:"#4A90E2", padding:"30px", color:"white"}}>CONTACT ME</h1>
+    <Container style ={{margin: "auto", backgroundColor: "#F4F4F4", padding:"50px", maxWidth:"1000px"}}>
         <Row>
-            <Col md={3}>
+            <Col md={1}>
             <h3>Name: </h3>
             <input
             style={{marginBottom: "50px", width:"300px", height:"50px"}}
@@ -120,10 +121,6 @@ const Contact:React.FC = () => {
             value={formData.name}
             onChange={handleChange}
             />
-            </Col>
-        </Row>
-        <Row>
-            <Col md={1}>
             <h3>Email: </h3>
             <input
             style={{marginBottom: "50px", width:"300px", height:"50px"}}
@@ -133,10 +130,6 @@ const Contact:React.FC = () => {
             value={formData.email}
             onChange={handleChange}
             />
-            </Col>
-        </Row>
-        <Row>
-            <Col md={2}>
             <h3>Message: </h3>
             <textarea
             style={{marginBottom: "50px", width:"300px", height:"250px"}}
@@ -145,21 +138,20 @@ const Contact:React.FC = () => {
             value={formData.message}
             onChange={handleChange}
             />
-            </Col>
-        </Row>
-        <Row>
-            <Col md={5}>
             <button
             style={{backgroundColor: "#4A90E2", borderColor:"#4A90E2", width:"200px", height:"40px"}}
             type="submit"
             disabled={loading}
             >{loading ? "Sending message...": "Send Message"}</button>
             </Col>
-            <Row>
-                <Col>
-                <td><p>{status}</p></td>
-                </Col>
-            </Row>
+            <Col style={{marginLeft:"400px", marginTop:"30px"}}>
+                <Image src={mara2} style={{width:"400px", marginBottom:"20px"}} rounded />
+                <h5>Gadgad, Mara Syldeni M.</h5>
+                <h5>BSIT</h5>
+            </Col>
+        </Row>
+        <Row>
+            <p>{status}</p>
         </Row>
     </Container>
     </form>
